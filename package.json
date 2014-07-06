@@ -1,0 +1,22 @@
+{
+  "name": "ember-cli-document-title",
+  "version": "0.0.0",
+  "description": "Adding document title functionality to your ember app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimroen/ember-cli-document-title.git"
+  },
+  "keywords": [
+    "ember-addon"
+  ],
+  "author": "Kim Røen <kim@kimroen.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kimroen/ember-cli-document-title/issues"
+  },
+  "homepage": "https://github.com/kimroen/ember-cli-document-title"
+}

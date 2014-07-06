@@ -50,16 +50,19 @@ Let's say you want something like "Posts - My Blog", with "- My Blog"
 being static, and "Posts" being something you define on each route.
 
 ```js
+// routes/posts.js
+export default Ember.Route.extend({
+  titleToken: "Posts"
+});
+```
+
+This will be collected and bubble up until it hits the Application Route
+```js
 // routes/application.js
 export default Ember.Route.extend({
   title: function(tokens) {
     return tokens.join(' - ') + ' - My Blog';
   }
-});
-
-// routes/posts.js
-export default Ember.Route.extend({
-  titleToken: "Posts"
 });
 ```
 

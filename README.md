@@ -1,6 +1,7 @@
 # Sane Document Title
 This addon adds sane document.title integration to your ember app.
-All does is include [this gist by @machty](https://gist.github.com/machty/8413411) to your application.
+
+All it does is include [this gist by @machty](https://gist.github.com/machty/8413411) to your application.
 
 ## Install
 Install by running

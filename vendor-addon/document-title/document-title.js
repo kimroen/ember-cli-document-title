@@ -17,9 +17,9 @@ Ember.Route.reopen({
   // Provided by Ember
   _actions: {
     collectTitleTokens: function(tokens) {
-      var titleToken = this.get('titleToken');
+      var titleToken = Ember.get(this, 'titleToken');
       if (typeof titleToken === 'function') {
-        titleToken = titleToken(this.currentModel);
+        titleToken = titleToken(Ember.get(this, 'currentModel'));
       }
 
       if (Ember.isArray(titleToken)) {
@@ -30,7 +30,7 @@ Ember.Route.reopen({
 
       // If `title` exists, it signals the end of the
       // token-collection, and the title is decided right here.
-      var title = this.get('title');
+      var title = Ember.get(this, 'title');
       if (title) {
         var finalTitle;
         if (typeof title === 'function') {

@@ -1,3 +1,5 @@
+var get = Ember.get;
+
 // Extend Ember.Route to add support for sensible
 // document.title integration.
 Ember.Route.reopen({
@@ -17,9 +19,9 @@ Ember.Route.reopen({
   // Provided by Ember
   _actions: {
     collectTitleTokens: function(tokens) {
-      var titleToken = Ember.get(this, 'titleToken');
+      var titleToken = get(this, 'titleToken');
       if (typeof titleToken === 'function') {
-        titleToken = titleToken(Ember.get(this, 'currentModel'));
+        titleToken = titleToken(get(this, 'currentModel'));
       }
 
       if (Ember.isArray(titleToken)) {
@@ -30,7 +32,7 @@ Ember.Route.reopen({
 
       // If `title` exists, it signals the end of the
       // token-collection, and the title is decided right here.
-      var title = Ember.get(this, 'title');
+      var title = get(this, 'title');
       if (title) {
         var finalTitle;
         if (typeof title === 'function') {

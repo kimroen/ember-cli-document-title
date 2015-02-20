@@ -1,5 +1,5 @@
 {
-  "name": "ember-cli-document-title-new",
+  "name": "ember-cli-document-title",
   "dependencies": {
     "jquery": "^1.11.1",
     "ember": "1.10.0",

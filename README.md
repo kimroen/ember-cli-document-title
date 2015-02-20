@@ -6,7 +6,7 @@ All it does is include [this gist by @machty](https://gist.github.com/machty/841
 ## Install
 Install by running
 ```
-npm install ember-cli-document-title --save-dev
+ember install:addon ember-cli-document-title
 ```
 
 ## So, how does this work?

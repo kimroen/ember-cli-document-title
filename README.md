@@ -74,7 +74,7 @@ My Blog".
 Let's say we have this object as our post-model:
 
 ```js
-Ember.Object.extend({
+Ember.Object.create({
   name: "Ember is Omakase"
 });
 ```
@@ -104,7 +104,7 @@ And continue to the Application Route:
 // routes/application.js
 export default Ember.Route.extend({
   title: function(tokens) {
-    return tokens.join(' - ') + ' - My Blog';
+    return tokens.reverse().join(' - ') + ' - My Blog';
   }
 });
 ```

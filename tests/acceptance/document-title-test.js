@@ -51,6 +51,7 @@ test('dynamic title based on route attributes', function(assert) {
   visit('/friendship-status');
 
   andThen(function() {
-    assert.equal(router._title, 'We are friends - My Blog');
+    assert.equal(router._title, 'We are best friends',
+      'the context is correct for `title` and `titleToken`');
   });
 });

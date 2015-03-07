@@ -21,7 +21,7 @@ Ember.Route.reopen({
     collectTitleTokens: function(tokens) {
       var titleToken = get(this, 'titleToken');
       if (typeof titleToken === 'function') {
-        titleToken = titleToken(get(this, 'currentModel'));
+        titleToken = titleToken.call(this, get(this, 'currentModel'));
       }
 
       if (Ember.isArray(titleToken)) {

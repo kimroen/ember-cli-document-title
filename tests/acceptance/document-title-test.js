@@ -44,3 +44,13 @@ test('dynamic title based on a model', function(assert) {
     assert.equal(router._title, 'Ember is omakase - Posts - My Blog');
   });
 });
+
+test('dynamic title based on route attributes', function(assert) {
+  assert.expect(1);
+
+  visit('/friendship-status');
+
+  andThen(function() {
+    assert.equal(router._title, 'We are friends - My Blog');
+  });
+});

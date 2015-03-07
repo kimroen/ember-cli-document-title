@@ -1,6 +1,7 @@
 ## master
 + Re-did the addon structure to match newer addon conventions [#3](https://github.com/kimroen/ember-cli-document-title/pull/3)
 + Added tests [#3](https://github.com/kimroen/ember-cli-document-title/pull/3)
++ Fixed the context for the `title` and `titleToken` hooks on routes. [#5](https://github.com/kimroen/ember-cli-document-title/pull/5) and [#7](https://github.com/kimroen/ember-cli-document-title/pull/7)
 
 ## 0.0.2
 + Access route properties using getters [#2](https://github.com/kimroen/ember-cli-document-title/pull/2)

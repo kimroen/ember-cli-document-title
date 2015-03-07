@@ -36,7 +36,7 @@ Ember.Route.reopen({
       if (title) {
         var finalTitle;
         if (typeof title === 'function') {
-          finalTitle = title(tokens);
+          finalTitle = title.call(this, tokens);
         } else {
           // Tokens aren't even considered... a string
           // title just sledgehammer overwrites any children tokens.

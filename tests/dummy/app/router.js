@@ -9,7 +9,7 @@ Router.map(function() {
   this.resource('posts', function() {});
   this.route('about');
   this.route('team');
-  this.route('friendship-status');
+  this.resource('friendship-status', function() {});
 });
 
 export default Router;

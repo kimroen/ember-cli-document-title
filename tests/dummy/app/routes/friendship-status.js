@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  status: 'friends',
+  degree: 'best',
 
-  titleToken: function(model) {
-    return 'We are ' + this.get('status');
+  title: function(tokens) {
+    return 'We are ' + this.get('degree') + ' ' + tokens[0];
   }
 });

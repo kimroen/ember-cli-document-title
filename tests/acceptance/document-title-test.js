@@ -15,6 +15,16 @@ module('Acceptance: DocumentTitle', {
   }
 });
 
+test('Show default title properly - no tokens', function(assert) {
+  assert.expect(1);
+
+  visit('/');
+
+  andThen(function() {
+    assert.equal(router._title, 'My Blog', 'Default title is correct');
+  });
+});
+
 test('static title doesn\'t bubble', function(assert) {
   assert.expect(1);
 

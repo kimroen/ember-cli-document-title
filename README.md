@@ -37,12 +37,12 @@ used as the title for it.
 ```js
 // routes/posts.js
 export default Ember.Route.extend({
-  title: "Our Favorite posts!"
+  title: 'Our Favorite posts!'
 });
 
 // routes/post.js
 export default Ember.Route.extend({
-  title: "Please enjoy this post"
+  title: 'Please enjoy this post'
 });
 ```
 
@@ -53,7 +53,7 @@ being static, and "Posts" being something you define on each route.
 ```js
 // routes/posts.js
 export default Ember.Route.extend({
-  titleToken: "Posts"
+  titleToken: 'Posts'
 });
 ```
 
@@ -75,7 +75,7 @@ Let's say we have this object as our post-model:
 
 ```js
 Ember.Object.create({
-  name: "Ember is Omakase"
+  name: 'Ember is Omakase'
 });
 ```
 And we want to use the name of each post in the title.
@@ -94,7 +94,7 @@ This will then bubble up until it reaches our Posts Route:
 ```js
 // routes/posts.js
 export default Ember.Route.extend({
-  titleToken: "Posts"
+  titleToken: 'Posts'
 });
 ```
 
@@ -104,7 +104,10 @@ And continue to the Application Route:
 // routes/application.js
 export default Ember.Route.extend({
   title: function(tokens) {
-    return tokens.reverse().join(' - ') + ' - My Blog';
+   var base = 'My Blog';
+   var hasTokens = tokens && tokens.length;
+
+   return hasTokens ? tokens.reverse().join(' - ') + ' - ' + base : base;
   }
 });
 ```

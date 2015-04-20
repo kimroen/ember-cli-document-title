@@ -62,7 +62,10 @@ Ember.Router.reopen({
     if (Ember.testing) {
       this._title = title;
     } else {
-      window.document.title = title;
+      // In Ember Fastboot, document is not available
+      if (typeof(window.document) !== 'undefined') {
+        window.document.title = title;
+      }
     }
   }
 });

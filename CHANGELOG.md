@@ -1,4 +1,4 @@
-## master
+## 0.1.0
 + Removed another use of prototype extensions [#12](https://github.com/kimroen/ember-cli-document-title/pull/12)
 + Made sure use with Fastboot doesn't explode [#13](https://github.com/kimroen/ember-cli-document-title/pull/13)
 + Added testing of more Ember versions (1.10 and up)[#13](https://github.com/kimroen/ember-cli-document-title/pull/13)

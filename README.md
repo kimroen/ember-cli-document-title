@@ -1,12 +1,15 @@
 # Sane Document Title [![Build Status](https://travis-ci.org/kimroen/ember-cli-document-title.svg?branch=master)](https://travis-ci.org/kimroen/ember-cli-document-title)
 This addon adds sane `document.title` integration to your ember app.
 
-All it does is include [this gist by @machty](https://gist.github.com/machty/8413411) to your application.
+Originally based on [this gist by @machty](https://gist.github.com/machty/8413411), and since improved upon by many fabulous contributors.
+
+Tested to work with Ember 1.10 and up.
 
 ## Install
 Install by running
+
 ```
-ember install:addon ember-cli-document-title
+ember install ember-cli-document-title
 ```
 
 ## So, how does this work?

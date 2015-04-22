@@ -54,9 +54,9 @@ Ember.Route.reopen({
 });
 
 Ember.Router.reopen({
-  updateTitle: function() {
+  updateTitle: Ember.on('didTransition', function() {
     this.send('collectTitleTokens', []);
-  }.on('didTransition'),
+  }),
 
   setTitle: function(title) {
     if (Ember.testing) {

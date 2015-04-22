@@ -59,10 +59,12 @@ Ember.Router.reopen({
   }),
 
   setTitle: function(title) {
-    if (Ember.testing) {
-      this._title = title;
+    var renderer = this.container.lookup('renderer:-dom');
+
+    if (renderer) {
+      Ember.set(renderer, '_dom.document.title', title);
     } else {
-      window.document.title = title;
+      document.title = title;
     }
   }
 });

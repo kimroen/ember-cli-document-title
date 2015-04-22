@@ -21,7 +21,7 @@ test('Show default title properly - no tokens', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(router._title, 'My Blog', 'Default title is correct');
+    assert.equal(document.title, 'My Blog', 'Default title is correct');
   });
 });
 
@@ -31,7 +31,7 @@ test('static title doesn\'t bubble', function(assert) {
   visit('/about');
 
   andThen(function() {
-    assert.equal(router._title, 'About Us', 'It doesn\'t bubble up');
+    assert.equal(document.title, 'About Us', 'It doesn\'t bubble up');
   });
 });
 
@@ -41,7 +41,7 @@ test('bubbling title tokens', function(assert) {
   visit('/team');
 
   andThen(function() {
-    assert.equal(router._title, 'The Team - My Blog', 'The title token bubbles up');
+    assert.equal(document.title, 'The Team - My Blog', 'The title token bubbles up');
   });
 });
 
@@ -51,7 +51,7 @@ test('dynamic title based on a model', function(assert) {
   visit('/posts');
 
   andThen(function() {
-    assert.equal(router._title, 'Ember is omakase - Posts - My Blog');
+    assert.equal(document.title, 'Ember is omakase - Posts - My Blog');
   });
 });
 
@@ -61,7 +61,7 @@ test('dynamic title based on route attributes', function(assert) {
   visit('/friendship-status');
 
   andThen(function() {
-    assert.equal(router._title, 'We are best friends',
+    assert.equal(document.title, 'We are best friends',
       'the context is correct for `title` and `titleToken`');
   });
 });

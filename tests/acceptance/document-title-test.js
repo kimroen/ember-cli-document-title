@@ -2,16 +2,17 @@ import Ember from 'ember';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 
-var application, router;
+var application, originalTitle;
 
 module('Acceptance: DocumentTitle', {
   beforeEach: function() {
+    originalTitle = document.title;
     application = startApp();
-    router = application.__container__.lookup('router:main');
   },
 
   afterEach: function() {
     Ember.run(application, 'destroy');
+    document.title = originalTitle;
   }
 });
 

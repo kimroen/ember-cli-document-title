@@ -1,3 +1,6 @@
+## master
++ Remove another use of prototype extensions [#12](https://github.com/kimroen/ember-cli-document-title/pull/12)
+
 ## 0.0.3
 + Re-did the addon structure to match newer addon conventions [#3](https://github.com/kimroen/ember-cli-document-title/pull/3)
 + Added tests [#3](https://github.com/kimroen/ember-cli-document-title/pull/3)

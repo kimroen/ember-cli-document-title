@@ -43,8 +43,12 @@ Ember.Route.reopen({
           finalTitle = title;
         }
 
-        // Stubbable fn that sets document.title
-        this.router.setTitle(finalTitle);
+        if (!get(this, 'animateTitle')) {
+          // Stubbable fn that sets document.title
+          this.router.setTitle(finalTitle);
+        } else {
+          this.router.animateTitle(finalTitle, 0);          
+        }
       } else {
         // Continue bubbling.
         return true;
@@ -66,5 +70,13 @@ Ember.Router.reopen({
     } else {
       document.title = title;
     }
+  },
+
+  animateTitle: function(title, index) {
+    this.setTitle(title.slice(index) + ' - ' + title.substr(0, index));
+    Ember.run.later(this, function() {
+      index = index === title.length ? 0 : index + 1;
+      this.animateTitle(title, index);
+    }, 300);
   }
 });

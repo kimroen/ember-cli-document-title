@@ -10,5 +10,5 @@ dist/
 .npmignore
 **/.gitkeep
 bower.json
-Brocfile.js
+ember-cli-build.js
 testem.json

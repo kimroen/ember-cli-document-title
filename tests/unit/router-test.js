@@ -6,8 +6,13 @@ var container, registry, router, originalTitle;
 module('router:main', {
   beforeEach: function() {
     originalTitle = document.title;
-    container = new Ember.Container();
-    registry = container._registry || container;
+    
+    if (Ember.Registry) {
+      registry = new Ember.Registry();
+      container = registry.container();
+    } else {
+      registry = container = new Ember.Container();
+    }
 
     registry.register('location:none', Ember.NoneLocation);
 

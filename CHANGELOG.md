@@ -1,3 +1,6 @@
+## 0.2.0
++ Fixed deprecation warning regarding `_actions` in ember 2.0 and above. Thanks for the help, everyone! [#28](https://github.com/kimroen/ember-cli-document-title/pull/28)
+
 ## 0.1.0
 + Removed another use of prototype extensions [#12](https://github.com/kimroen/ember-cli-document-title/pull/12)
 + Made sure use with Fastboot doesn't explode [#13](https://github.com/kimroen/ember-cli-document-title/pull/13)

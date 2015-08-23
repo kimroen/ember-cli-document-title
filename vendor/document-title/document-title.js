@@ -17,7 +17,7 @@ Ember.Route.reopen({
   title: null,
 
   // Provided by Ember
-  _actions: {
+  actions: {
     collectTitleTokens: function(tokens) {
       var titleToken = get(this, 'titleToken');
       if (typeof titleToken === 'function') {

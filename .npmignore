@@ -2,12 +2,15 @@ bower_components/
 tests/
 tmp/
 dist/
+config/
 
 .bowerrc
 .editorconfig
 .ember-cli
 .travis.yml
 .npmignore
+.watchmanconfig
+.jshintrc
 **/.gitkeep
 bower.json
 ember-cli-build.js

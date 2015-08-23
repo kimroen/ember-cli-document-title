@@ -66,3 +66,19 @@ test('dynamic title based on route attributes', function(assert) {
       'the context is correct for `title` and `titleToken`');
   });
 });
+
+test('title updates when you switch routes', function(assert) {
+  assert.expect(2);
+
+  visit('/about');
+
+  andThen(function() {
+    assert.equal(document.title, 'About Us');
+  });
+
+  click('.test-posts-link');
+
+  andThen(function() {
+    assert.equal(document.title, 'Ember is omakase - Posts - My Blog');
+  });
+});

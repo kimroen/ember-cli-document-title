@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('about');
   this.route('team');
   this.route('friendship-status', function() {});
+  this.route('followers');
+  this.route('donations', { path: 'donations/:donations' });
 });
 
 export default Router;

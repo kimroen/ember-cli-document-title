@@ -11,7 +11,14 @@ var routeProps = {
   // that will be the document title. The `collectTitleTokens` action
   // stops bubbling once a route is encountered that has a `title`
   // defined.
-  title: null
+  title: null,
+
+  // 'volatileController' must be used instead of `controller` when creating
+  // a computed property for `title` or `titleToken` because `controller`
+  // is not observable.
+  volatileController: Ember.computed(function() {
+    return this.get('controller');
+  }).volatile()
 };
 
 /*
@@ -35,33 +42,13 @@ var mergedActionPropertyName = (function() {
 })();
 
 routeProps[mergedActionPropertyName] = {
-  collectTitleTokens: function(tokens) {
-    var titleToken = get(this, 'titleToken');
-    if (typeof titleToken === 'function') {
-      titleToken = titleToken.call(this, get(this, 'currentModel'));
-    }
+  collectTitleTokens: function(routes) {
+    routes.push(this);
 
-    if (Ember.isArray(titleToken)) {
-      tokens.unshift.apply(this, titleToken);
-    } else if (titleToken) {
-      tokens.unshift(titleToken);
-    }
-
-    // If `title` exists, it signals the end of the
-    // token-collection, and the title is decided right here.
+    // If `title` exists, it signals the end of the token-collection.
     var title = get(this, 'title');
     if (title) {
-      var finalTitle;
-      if (typeof title === 'function') {
-        finalTitle = title.call(this, tokens);
-      } else {
-        // Tokens aren't even considered... a string
-        // title just sledgehammer overwrites any children tokens.
-        finalTitle = title;
-      }
-
-      // Stubbable fn that sets document.title
-      this.router.setTitle(finalTitle);
+      this.router.setTitleRoutes(routes);
     } else {
       // Continue bubbling.
       return true;
@@ -72,9 +59,76 @@ routeProps[mergedActionPropertyName] = {
 Ember.Route.reopen(routeProps);
 
 Ember.Router.reopen({
-  updateTitle: Ember.on('didTransition', function() {
-    this.send('collectTitleTokens', []);
+
+  titleTokenRoutes: Ember.A(),
+
+  titleRoute: null,
+
+  updateTitleRoutes: Ember.on('didTransition', function() {
+    this.send('collectTitleTokens', Ember.A());
   }),
+
+  setTitleRoutes: function(routes) {
+    // title observer
+    var newTitleRoute = routes[routes.length - 1];
+    if (this.titleRoute !== newTitleRoute) {
+      if (this.titleRoute) {
+        this.titleRoute.removeObserver('title', this, 'titleChanged');
+      }
+      this.titleRoute = newTitleRoute;
+      newTitleRoute.addObserver('title', this, 'titleChanged');
+    }
+
+    // titleToken observers
+    var removedRoutes = Ember.A(), keptRoutes = Ember.A();
+    this.titleTokenRoutes.forEach(function(route){
+      (routes.contains(route) ? keptRoutes : removedRoutes).push(route);
+    });
+
+    this.titleTokenRoutes = routes;
+
+    removedRoutes.forEach(function (route) {
+      route.removeObserver('titleToken', this, 'titleChanged');
+    }, this);
+
+    routes.forEach(function (route) {
+      if (!keptRoutes.contains(route)) {
+        route.addObserver('titleToken', this, 'titleChanged');
+      }
+    }, this);
+
+    // update title
+    this.computeTitle();
+  },
+
+  titleChanged: function() {
+    Ember.run.scheduleOnce('render', this, 'computeTitle');
+  },
+
+  computeTitle: function() {
+    var title = get(this.titleRoute, 'title');
+
+    if (typeof title === 'function') {
+      var tokens = Ember.A();
+      this.titleTokenRoutes.forEach(function (route) {
+        var titleToken = get(route, 'titleToken');
+        if (typeof titleToken === 'function') {
+          titleToken = titleToken.call(route, get(route, 'currentModel'));
+        }
+
+        if (Ember.isArray(titleToken)) {
+          tokens.unshift.apply(route, titleToken);
+        } else if (titleToken) {
+          tokens.unshift(titleToken);
+        }
+      }, this);
+
+      title = title.call(this.titleRoute, tokens);
+    }
+
+    // Stubbable fn that sets document.title
+    this.setTitle(title);
+  },
 
   setTitle: function(title) {
     var renderer = this.container.lookup('renderer:-dom');

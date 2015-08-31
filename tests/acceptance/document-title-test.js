@@ -82,3 +82,53 @@ test('title updates when you switch routes', function(assert) {
     assert.equal(document.title, 'Ember is omakase - Posts - My Blog');
   });
 });
+
+test('titleTokens are observed', function(assert) {
+  assert.expect(2);
+
+  visit('/followers');
+
+  andThen(function() {
+    assert.equal(document.title, 'Followers: 99');
+
+    click('.test-follow-button');
+
+    andThen(function() {
+      assert.equal(document.title, 'Followers: 100',
+        '`titleToken` is observed');
+    });
+  });
+});
+
+test('titles are observed', function(assert) {
+  assert.expect(2);
+
+  visit('/donations/a');
+
+  andThen(function() {
+    assert.equal(document.title, 'Donations: 999');
+
+    click('.test-donate-button');
+
+    andThen(function() {
+      assert.equal(document.title, 'Donations: 1000',
+        '`title` is observed');
+    });
+  });
+});
+
+test('title updates when you switch routes with computed properties', function(assert) {
+  assert.expect(2);
+
+  visit('/donations/a');
+
+  andThen(function() {
+    assert.equal(document.title, 'Donations: 999');
+  });
+
+  click('.test-change-bound-route');
+
+  andThen(function() {
+    assert.equal(document.title, 'Donations: 0');
+  });
+});

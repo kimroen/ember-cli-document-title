@@ -107,10 +107,9 @@ And continue to the Application Route:
 // routes/application.js
 export default Ember.Route.extend({
   title: function(tokens) {
-   var base = 'My Blog';
-   var hasTokens = tokens && tokens.length;
-
-   return hasTokens ? tokens.reverse().join(' - ') + ' - ' + base : base;
+   tokens = Ember.makeArray(tokens);
+   tokens.push('My Blog');
+   return tokens.reverse().join(' - ');
   }
 });
 ```

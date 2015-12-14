@@ -20,6 +20,10 @@ module('router:main', {
       location: 'none',
       container: container
     });
+
+    if (Ember.setOwner) {
+      Ember.setOwner(router, container);
+    }
   },
 
   afterEach: function() {

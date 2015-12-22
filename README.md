@@ -3,7 +3,7 @@ This addon adds sane `document.title` integration to your ember app.
 
 Originally based on [this gist by @machty](https://gist.github.com/machty/8413411), and since improved upon by many fabulous contributors.
 
-Tested to work with Ember 1.10 and up.
+Tested to work with Ember 1.13.9 and up.
 
 ## Install
 Install by running

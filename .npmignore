@@ -3,12 +3,15 @@ tests/
 tmp/
 dist/
 
+config/ember-try.js
 .bowerrc
 .editorconfig
 .ember-cli
+.jshintrc
 .travis.yml
 .npmignore
+.watchmanconfig
 **/.gitkeep
 bower.json
-Brocfile.js
+ember-cli-build.js
 testem.json

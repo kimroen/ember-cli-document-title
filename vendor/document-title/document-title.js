@@ -43,7 +43,7 @@ routeProps[mergedActionPropertyName] = {
     }
 
     if (Ember.isArray(titleToken)) {
-      tokens.unshift.apply(this, titleToken);
+      tokens.unshift.apply(tokens, titleToken);
     } else if (titleToken) {
       tokens.unshift(titleToken);
     }

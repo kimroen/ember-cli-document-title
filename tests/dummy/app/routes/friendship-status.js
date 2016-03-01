@@ -4,6 +4,6 @@ export default Ember.Route.extend({
   degree: 'best',
 
   title: function(tokens) {
-    return 'We are ' + this.get('degree') + ' ' + tokens[0];
+    return `We are ${this.get('degree')} ${tokens.join(' ')}`;
   }
 });

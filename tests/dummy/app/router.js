@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('posts', function() {});
   this.route('about');
   this.route('team');
+  this.route('candy');
   this.route('friendship-status', function() {});
 });
 

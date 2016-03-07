@@ -67,6 +67,17 @@ test('dynamic title based on route attributes', function(assert) {
   });
 });
 
+test('returning an array from titleToken works', function(assert) {
+  assert.expect(1);
+
+  visit('/candy');
+
+  andThen(function() {
+    assert.equal(document.title,
+      'My favorite candies are dumle and sort pepper');
+  });
+});
+
 test('title updates when you switch routes', function(assert) {
   assert.expect(2);
 

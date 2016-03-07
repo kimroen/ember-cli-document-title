@@ -1,3 +1,6 @@
+### 0.3.1
++ Fix problem with returning an array from `titleToken` [#37](https://github.com/kimroen/ember-cli-document-title/pull/37)
+
 ## 0.3.0
 + Fix deprecation in ember 2.3 and above regarding containers. [#31](https://github.com/kimroen/ember-cli-document-title/pull/31)
 + Other small improvements [#29](https://github.com/kimroen/ember-cli-document-title/pull/29) and [#30](https://github.com/kimroen/ember-cli-document-title/pull/30).

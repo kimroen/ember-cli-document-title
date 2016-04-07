@@ -12,6 +12,12 @@ Install by running
 ember install ember-cli-document-title
 ```
 
+### Remove existing <title> tag
+As of version `0.4.0` this addon sets the document title by adding a
+`<title>` tag within your document's `<head>`.  As such to avoid a
+duplicated title you will need to remove the current existing
+`<title>` tag from `app/index.html`.
+
 ## So, how does this work?
 This adds two new keys to your routes:
 

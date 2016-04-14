@@ -117,3 +117,20 @@ export default Ember.Route.extend({
 This will result in these titles:
 - On /posts - "Posts - My Blog"
 - On /posts/1 - "Ember is Omakase - Posts - My Blog"
+
+### Simple title based on model info
+
+To set the title to a model attribute, or a string based on it:
+
+```js
+// routes/post.js
+export default Ember.Route.extend({
+  title: function() {
+    return this.modelFor(this.routeName).get('name');
+  }
+});
+```
+
+Continuing the previous example, this returns:
+
+- On /posts/1 - "Ember is Omakase"

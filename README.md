@@ -117,3 +117,41 @@ export default Ember.Route.extend({
 This will result in these titles:
 - On /posts - "Posts - My Blog"
 - On /posts/1 - "Ember is Omakase - Posts - My Blog"
+
+### Use with `ember-cli-head`
+
+Using `ember-cli-document-title` with [ember-cli-head](https://github.com/ronco/ember-cli-head)
+is very straight forward and allows you to use the wonderful route based declaritive API for
+`title` and still easily add other things to the document's `<head>` (i.e. `meta` tags).
+
+Only a few tweaks are needed to use both of these addons together:
+
+* Install both addons:
+
+```sh
+ember install ember-cli-head
+ember install ember-cli-document-title
+```
+
+* Add `headData` and `setTitle` to your `app/router.js`:
+
+```js
+const Router = Ember.Router.extend({
+  location: config.locationType,
+  headData: Ember.inject.service(),
+
+  setTitle(title) {
+    this.get('headData').set('title', title);
+  }
+});
+```
+
+* Remove `<title>` from your `app/index.html`.
+
+* Update `app/templates/head.js` (added by ember-cli-head):
+
+```hbs
+{{! app/templates/head.hbs }}
+
+<title>{{model.title}}</title>
+```

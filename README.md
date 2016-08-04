@@ -148,7 +148,7 @@ const Router = Ember.Router.extend({
 
 * Remove `<title>` from your `app/index.html`.
 
-* Update `app/templates/head.js` (added by ember-cli-head):
+* Update `app/templates/head.hbs` (added by ember-cli-head):
 
 ```hbs
 {{! app/templates/head.hbs }}

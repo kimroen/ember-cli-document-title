@@ -1,5 +1,4 @@
 var get = Ember.get;
-var getOwner = Ember.getOwner;
 
 var routeProps = {
   // `titleToken` can either be a static string or a function
@@ -73,18 +72,13 @@ routeProps[mergedActionPropertyName] = {
 Ember.Route.reopen(routeProps);
 
 Ember.Router.reopen({
+  headData: Ember.inject.service(),
+
   updateTitle: Ember.on('didTransition', function() {
     this.send('collectTitleTokens', []);
   }),
 
   setTitle: function(title) {
-    var container = getOwner ? getOwner(this) : this.container;
-    var renderer = container.lookup('renderer:-dom');
-
-    if (renderer) {
-      Ember.set(renderer, '_dom.document.title', title);
-    } else {
-      document.title = title;
-    }
+    this.set('headData.title', title);
   }
 });

@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-document-title",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Adding document title functionality to your ember app",
   "main": "index.js",
   "directories": {
@@ -49,7 +49,8 @@
     "ember-addon"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.1.5"
+    "ember-cli-babel": "^5.1.5",
+    "ember-cli-head": "0.0.6"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

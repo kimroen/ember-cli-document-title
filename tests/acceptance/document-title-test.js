@@ -2,17 +2,15 @@ import Ember from 'ember';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 
-var application, originalTitle;
+let application;
 
 module('Acceptance: DocumentTitle', {
   beforeEach: function() {
-    originalTitle = document.title;
     application = startApp();
   },
 
   afterEach: function() {
     Ember.run(application, 'destroy');
-    document.title = originalTitle;
   }
 });
 
@@ -22,7 +20,7 @@ test('Show default title properly - no tokens', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(document.title, 'My Blog', 'Default title is correct');
+    assert.equal(find('title', 'head').text(), 'My Blog', 'Default title is correct');
   });
 });
 
@@ -32,7 +30,7 @@ test('static title doesn\'t bubble', function(assert) {
   visit('/about');
 
   andThen(function() {
-    assert.equal(document.title, 'About Us', 'It doesn\'t bubble up');
+    assert.equal(find('title', 'head').text(), 'About Us', 'It doesn\'t bubble up');
   });
 });
 
@@ -42,7 +40,7 @@ test('bubbling title tokens', function(assert) {
   visit('/team');
 
   andThen(function() {
-    assert.equal(document.title, 'The Team - My Blog', 'The title token bubbles up');
+    assert.equal(find('title', 'head').text(), 'The Team - My Blog', 'The title token bubbles up');
   });
 });
 
@@ -52,7 +50,7 @@ test('dynamic title based on a model', function(assert) {
   visit('/posts');
 
   andThen(function() {
-    assert.equal(document.title, 'Ember is omakase - Posts - My Blog');
+    assert.equal(find('title', 'head').text(), 'Ember is omakase - Posts - My Blog');
   });
 });
 
@@ -62,7 +60,7 @@ test('dynamic title based on route attributes', function(assert) {
   visit('/friendship-status');
 
   andThen(function() {
-    assert.equal(document.title, 'We are best friends',
+    assert.equal(find('title', 'head').text(), 'We are best friends',
       'the context is correct for `title` and `titleToken`');
   });
 });
@@ -73,7 +71,7 @@ test('returning an array from titleToken works', function(assert) {
   visit('/candy');
 
   andThen(function() {
-    assert.equal(document.title,
+    assert.equal(find('title', 'head').text(),
       'My favorite candies are dumle and sort pepper');
   });
 });
@@ -84,12 +82,12 @@ test('title updates when you switch routes', function(assert) {
   visit('/about');
 
   andThen(function() {
-    assert.equal(document.title, 'About Us');
+    assert.equal(find('title', 'head').text(), 'About Us');
   });
 
   click('.test-posts-link');
 
   andThen(function() {
-    assert.equal(document.title, 'Ember is omakase - Posts - My Blog');
+    assert.equal(find('title', 'head').text(), 'Ember is omakase - Posts - My Blog');
   });
 });

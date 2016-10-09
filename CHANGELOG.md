@@ -1,3 +1,6 @@
+## master
++ Add support for Glimmer 2 [#49](https://github.com/kimroen/ember-cli-document-title/pull/49)
+
 ### 0.3.1
 + Fix problem with returning an array from `titleToken` [#37](https://github.com/kimroen/ember-cli-document-title/pull/37)
 

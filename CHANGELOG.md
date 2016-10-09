@@ -1,5 +1,6 @@
 ## master
 + Add support for Glimmer 2 [#49](https://github.com/kimroen/ember-cli-document-title/pull/49)
++ Make it possible to use ember-cli-document-title inside another addon [#48](https://github.com/kimroen/ember-cli-document-title/pull/48)
 
 ### 0.3.1
 + Fix problem with returning an array from `titleToken` [#37](https://github.com/kimroen/ember-cli-document-title/pull/37)

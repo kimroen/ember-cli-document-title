@@ -80,13 +80,13 @@ Ember.Router.reopen({
   setTitle: function(title) {
     var container = getOwner ? getOwner(this) : this.container;
     var renderer = container.lookup('renderer:-dom');
+    var domForAppWithGlimmer2 = container.lookup('service:-document');
 
     if (renderer && renderer._dom) {
       Ember.set(renderer, '_dom.document.title', title);
-    } else if (renderer && renderer._env && renderer._env.getDOM) {
+    } else if (domForAppWithGlimmer2) {
       // Glimmer 2 has a different renderer
-      var dom = renderer._env.getDOM();
-      Ember.set(dom, 'document.title', title);
+      Ember.set(domForAppWithGlimmer2, 'title', title);
     } else {
       document.title = title;
     }

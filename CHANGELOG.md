@@ -1,5 +1,8 @@
 ## master
 
+## 0.3.3
++ Fix support for the combination of Glimmer 2 and Fastboot [#53](https://github.com/kimroen/ember-cli-document-title/pull/53)
+
 ## 0.3.2
 + Add support for Glimmer 2 [#49](https://github.com/kimroen/ember-cli-document-title/pull/49)
 + Make it possible to use ember-cli-document-title inside another addon [#48](https://github.com/kimroen/ember-cli-document-title/pull/48)

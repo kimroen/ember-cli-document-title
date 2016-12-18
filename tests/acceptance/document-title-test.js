@@ -62,7 +62,7 @@ test('dynamic title based on route attributes', function(assert) {
   visit('/friendship-status');
 
   andThen(function() {
-    assert.equal(document.title, 'We are best friends',
+    assert.equal(document.title, 'We are best friends for ever',
       'the context is correct for `title` and `titleToken`');
   });
 });

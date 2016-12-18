@@ -4,6 +4,6 @@ export default Ember.Route.extend({
   status: 'friends',
 
   titleToken: function() {
-    return this.get('status');
+    return [this.get('status'), 'for ever'];
   }
 });

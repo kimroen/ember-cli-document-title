@@ -22,7 +22,7 @@ They can be either strings or functions.
 
 Every time you transition to a route, the following will happen:
 
-1. Ember will collect the `titleToken`s from your leafmost route and
+1. Ember will collect the `titleToken`s from your leftmost route and
    bubble them up until it hits a route that has `title` defined.
    `titleToken` is the name of the route's model by default.
 2. If `title` is a string, that will be used as the document title

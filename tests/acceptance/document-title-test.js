@@ -93,3 +93,18 @@ test('title updates when you switch routes', function(assert) {
     assert.equal(document.title, 'Ember is omakase - Posts - My Blog');
   });
 });
+
+test('promise title is set after promise is resolved', function(assert) {
+  assert.expect(1);
+
+  var done = assert.async();
+
+  visit('/promise');
+
+  andThen(function() {
+    setTimeout(function () {
+      assert.equal(document.title, 'This title is as async as possible - My Blog');
+      done();
+    }, 4000);
+  });
+});

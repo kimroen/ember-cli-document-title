@@ -1,5 +1,6 @@
 var get = Ember.get;
 var getOwner = Ember.getOwner;
+var Promise = Ember.RSVP.Promise;
 
 var routeProps = {
   // `titleToken` can either be a static string or a function
@@ -52,17 +53,27 @@ routeProps[mergedActionPropertyName] = {
     // token-collection, and the title is decided right here.
     var title = get(this, 'title');
     if (title) {
-      var finalTitle;
-      if (typeof title === 'function') {
-        finalTitle = title.call(this, tokens);
-      } else {
-        // Tokens aren't even considered... a string
-        // title just sledgehammer overwrites any children tokens.
-        finalTitle = title;
-      }
+      var self = this;
 
-      // Stubbable fn that sets document.title
-      this.router.setTitle(finalTitle);
+      // Wrap in promise in case some tokens are asynchronous.
+      Promise.resolve()
+      .then(function() {
+        if (typeof title === 'function') {
+          // Wait for all tokens to resolve. It resolves immediately if all tokens are plain values (not promises).
+          return Promise.all(tokens)
+            .then(function(resolvedTokens) {
+              return title.call(self, resolvedTokens);
+            });
+        } else {
+          // Tokens aren't even considered... a string
+          // title just sledgehammer overwrites any children tokens.
+          return title;
+        }
+      })
+      .then(function(finalTitle) {
+        // Stubbable fn that sets document.title
+        self.router.setTitle(finalTitle);
+      });
     } else {
       // Continue bubbling.
       return true;

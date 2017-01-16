@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('team');
   this.route('candy');
   this.route('friendship-status', function() {});
+  this.route('promise');
 });
 
 export default Router;

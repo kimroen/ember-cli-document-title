@@ -1,4 +1,5 @@
 var get = Ember.get;
+var getOwner = Ember.getOwner;
 
 var routeProps = {
   // `titleToken` can either be a static string or a function
@@ -131,10 +132,15 @@ Ember.Router.reopen({
   },
 
   setTitle: function(title) {
-    var renderer = this.container.lookup('renderer:-dom');
+    var container = getOwner ? getOwner(this) : this.container;
+    var renderer = container.lookup('renderer:-dom');
+    var domForAppWithGlimmer2 = container.lookup('service:-document');
 
-    if (renderer) {
+    if (renderer && renderer._dom) {
       Ember.set(renderer, '_dom.document.title', title);
+    } else if (domForAppWithGlimmer2) {
+      // Glimmer 2 has a different renderer
+      Ember.set(domForAppWithGlimmer2, 'title', title);
     } else {
       document.title = title;
     }

@@ -1,4 +1,6 @@
 ## master
++ [BREAKING] Update dependencies and project/testing setup to match `ember-cli@2.15.0` [#56](https://github.com/kimroen/ember-cli-document-title/pull/56)
+  `ember-cli-document-title` now requires Node 4 or greater.
 
 ## 0.3.3
 + Fix support for the combination of Glimmer 2 and Fastboot [#53](https://github.com/kimroen/ember-cli-document-title/pull/53)

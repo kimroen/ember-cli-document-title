@@ -118,6 +118,50 @@ This will result in these titles:
 - On /posts - "Posts - My Blog"
 - On /posts/1 - "Ember is Omakase - Posts - My Blog"
 
+### Async titles using promises
+In some cases you may need `titleToken` to be got in an asynchronous way - e.g. from an async relationship of your model or from IndexedDB. To achive this you can return a promise from the `titleToken()` function. This promise should resolve with a string value which will be used as `titleToken`.
+
+Let's say we have these two models:
+
+`models/user.js`
+```js
+export default DS.Model.extend({
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string')
+});
+```
+
+`models/post.js`
+```js
+export default DS.Model.extend({
+  name: DS.attr('string'),
+  author: DS.belongsTo('user', { async: true })
+});
+```
+
+And we want to use both post name and it's author's name in the post title. As you can see `user` relationship is async, so `model.get('user')` will return a promise.
+
+```js
+// routes/post.js
+export default Ember.Route.extend({
+  titleToken: function(model) {
+    var postName = model.get('name');
+
+    return model.get('user')
+      .then(function (user) {
+        var authorName = user.get('firstName') + user.get('lastName');
+
+        return postName + '(by' + authorName + ')';
+      });
+  }
+});
+```
+
+With the same configuration for `Posts` and `Application` routes as in the previous example, this will result in this title:
+- On /posts/1 - "Ember is Omakase (by John Smith) - Posts - My Blog"
+
+Please pay attention, that page title will be unset until all promises from the `titleToken` chain resolve.
+
 ### Use with `ember-cli-head`
 
 Using `ember-cli-document-title` with [ember-cli-head](https://github.com/ronco/ember-cli-head)

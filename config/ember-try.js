@@ -18,6 +18,22 @@ module.exports = {
       }
     },
     {
+      name: 'ember-pre-2',
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#1.13.13'
+        },
+        resolutions: {
+          'ember': '1.13.13'
+        }
+      },
+      npm: {
+        devDependencies: {
+          'ember-source': null
+        }
+      }
+    },
+    {
       name: 'ember-lts-2.12',
       npm: {
         devDependencies: {

@@ -56,7 +56,7 @@ routeProps[mergedActionPropertyName] = {
       var self = this;
 
       // Wrap in promise in case some tokens are asynchronous.
-      Promise.resolve()
+      var completion = Promise.resolve()
       .then(function() {
         if (typeof title === 'function') {
           // Wait for all tokens to resolve. It resolves immediately if all tokens are plain values (not promises).
@@ -74,6 +74,13 @@ routeProps[mergedActionPropertyName] = {
         // Stubbable fn that sets document.title
         self.router.setTitle(finalTitle);
       });
+
+      // Tell FastBoot about our async code
+      var fastboot = lookupFastBoot(this);
+      if (fastboot && fastboot.isFastBoot) {
+        fastboot.deferRendering(completion);
+      }
+
     } else {
       // Continue bubbling.
       return true;
@@ -103,3 +110,8 @@ Ember.Router.reopen({
     }
   }
 });
+
+function lookupFastBoot(context) {
+  var container = getOwner ? getOwner(context) : context.container;
+  return container.lookup('service:fastboot');
+}

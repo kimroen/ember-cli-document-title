@@ -16,6 +16,7 @@ describe('index', function() {
         expect(response.statusCode).to.equal(200);
         expect($('body').length).to.equal(1);
         expect($('h1').text().trim()).to.equal('ember-fastboot-addon-tests');
+        expect($('title').text().trim()).to.equal('Sane Document Title');
       });
   });
 

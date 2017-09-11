@@ -90,6 +90,13 @@ module.exports = {
       }
     },
     {
+      name: 'fastboot-addon-tests',
+      command: 'ember fastboot:test',
+      npm: {
+        devDependencies: {}
+      }
+    },
+    {
       name: 'ember-default',
       npm: {
         devDependencies: {}

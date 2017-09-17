@@ -4,7 +4,11 @@ const expect = require('chai').expect;
 const setupTest = require('ember-fastboot-addon-tests').setupTest;
 
 describe('index', function() {
-  setupTest('fastboot'/*, options */);
+  setupTest('fastboot', {
+    installPackages: {
+      "ember-cli-head": "^0.3.1"
+    }
+  });
 
   it('renders', function() {
     return this.visit('/')
@@ -12,11 +16,10 @@ describe('index', function() {
         let $ = res.jQuery;
         let response = res.response;
 
-        // add your real tests here
         expect(response.statusCode).to.equal(200);
         expect($('body').length).to.equal(1);
         expect($('h1').text().trim()).to.equal('ember-fastboot-addon-tests');
-        expect($('title').text().trim()).to.equal('Sane Document Title');
+        expect($('title').text().trim()).to.equal('application - index');
       });
   });
 

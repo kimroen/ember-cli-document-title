@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { Promise as EmberPromise } from 'rsvp';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
   titleToken() {
-    return new Ember.RSVP.Promise(function(resolve) {
+    return new EmberPromise(function(resolve) {
       setTimeout(function () {
         resolve('This title is as async as possible');
       }, 3000);

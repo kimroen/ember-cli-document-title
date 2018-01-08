@@ -1,4 +1,3 @@
-/* eslint-env node */
 'use strict';
 
 module.exports = {
@@ -9,7 +8,7 @@ module.exports = {
     if (typeof app.import !== 'function' && app.app) {
       app = app.app;
     }
-    
+
     app.import('vendor/document-title/document-title.js');
   }
 };

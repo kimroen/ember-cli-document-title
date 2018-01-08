@@ -1,9 +1,7 @@
-import Ember from 'ember';
 import { module } from 'qunit';
+import { resolve } from 'rsvp';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
-
-const { RSVP: { resolve } } = Ember;
 
 export default function(name, options = {}) {
   module(name, {
@@ -11,7 +9,7 @@ export default function(name, options = {}) {
       this.application = startApp();
 
       if (options.beforeEach) {
-        options.beforeEach.apply(this, arguments);
+        return options.beforeEach.apply(this, arguments);
       }
     },
 

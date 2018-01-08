@@ -1,3 +1,6 @@
+import { setOwner } from '@ember/application';
+import EmberRouter from '@ember/routing/router';
+import NoneLocation from '@ember/routing/none-location';
 import Ember from 'ember';
 import { module, test } from 'qunit';
 
@@ -14,15 +17,15 @@ module('router:main', {
       registry = container = new Ember.Container();
     }
 
-    registry.register('location:none', Ember.NoneLocation);
+    registry.register('location:none', NoneLocation);
 
-    router = Ember.Router.create({
+    router = EmberRouter.create({
       location: 'none',
       container: container
     });
 
-    if (Ember.setOwner) {
-      Ember.setOwner(router, container);
+    if (setOwner) {
+      setOwner(router, container);
     }
   },
 

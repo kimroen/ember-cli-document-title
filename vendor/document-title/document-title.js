@@ -77,7 +77,7 @@ routeProps[mergedActionPropertyName] = {
 
       // Tell FastBoot about our async code
       var fastboot = lookupFastBoot(this);
-      if (fastboot && fastboot.isFastBoot) {
+      if (fastboot && fastboot.get('isFastBoot')) {
         fastboot.deferRendering(completion);
       }
 

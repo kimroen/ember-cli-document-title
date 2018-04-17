@@ -71,8 +71,10 @@ routeProps[mergedActionPropertyName] = {
         }
       })
       .then(function(finalTitle) {
+        var router = self._router || self.router;
+
         // Stubbable fn that sets document.title
-        self.router.setTitle(finalTitle);
+        router.setTitle(finalTitle);
       });
 
       // Tell FastBoot about our async code

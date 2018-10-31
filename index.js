@@ -3,7 +3,7 @@
 module.exports = {
   name: 'ember-cli-document-title',
 
-  included() {
+  included: function() {
     this._super.included.apply(this, arguments);
 
     const app = this._findHost();

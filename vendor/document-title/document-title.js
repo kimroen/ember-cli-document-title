@@ -13,7 +13,7 @@ var routeProps = {
   // that will be the document title. The `collectTitleTokens` action
   // stops bubbling once a route is encountered that has a `title`
   // defined.
-  title: null
+  title: null,
 };
 
 /*
@@ -57,35 +57,33 @@ routeProps[mergedActionPropertyName] = {
 
       // Wrap in promise in case some tokens are asynchronous.
       var completion = Promise.resolve()
-      .then(function() {
-        if (typeof title === 'function') {
-          // Wait for all tokens to resolve. It resolves immediately if all tokens are plain values (not promises).
-          return Promise.all(tokens)
-            .then(function(resolvedTokens) {
+        .then(function() {
+          if (typeof title === 'function') {
+            // Wait for all tokens to resolve. It resolves immediately if all tokens are plain values (not promises).
+            return Promise.all(tokens).then(function(resolvedTokens) {
               return title.call(self, resolvedTokens);
             });
-        } else {
-          // Tokens aren't even considered... a string
-          // title just sledgehammer overwrites any children tokens.
-          return title;
-        }
-      })
-      .then(function(finalTitle) {
-        // Stubbable fn that sets document.title
-        self.router.setTitle(finalTitle);
-      });
+          } else {
+            // Tokens aren't even considered... a string
+            // title just sledgehammer overwrites any children tokens.
+            return title;
+          }
+        })
+        .then(function(finalTitle) {
+          // Stubbable fn that sets document.title
+          self._router.setTitle(finalTitle);
+        });
 
       // Tell FastBoot about our async code
       var fastboot = lookupFastBoot(this);
       if (fastboot && fastboot.isFastBoot) {
         fastboot.deferRendering(completion);
       }
-
     } else {
       // Continue bubbling.
       return true;
     }
-  }
+  },
 };
 
 Ember.Route.reopen(routeProps);
@@ -108,7 +106,7 @@ Ember.Router.reopen({
     } else {
       document.title = title;
     }
-  }
+  },
 });
 
 function lookupFastBoot(context) {

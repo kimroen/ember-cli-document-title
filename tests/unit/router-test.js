@@ -5,6 +5,7 @@ let originalTitle;
 
 module('router:main', function(hooks) {
   setupTest(hooks);
+
   hooks.beforeEach(function() {
     originalTitle = document.title;
     this.router = this.owner.lookup('router:main');

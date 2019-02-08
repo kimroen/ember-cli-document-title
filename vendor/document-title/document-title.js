@@ -1,6 +1,6 @@
 var get = Ember.get;
 var getOwner = Ember.getOwner;
-var Promise = Ember.RSVP.Promise;
+var RSVPromise = Ember.RSVP.Promise;
 
 var routeProps = {
   // `titleToken` can either be a static string or a function
@@ -56,11 +56,11 @@ routeProps[mergedActionPropertyName] = {
       var self = this;
 
       // Wrap in promise in case some tokens are asynchronous.
-      var completion = Promise.resolve()
+      var completion = RSVPromise.resolve()
       .then(function() {
         if (typeof title === 'function') {
           // Wait for all tokens to resolve. It resolves immediately if all tokens are plain values (not promises).
-          return Promise.all(tokens)
+          return RSVPromise.all(tokens)
             .then(function(resolvedTokens) {
               return title.call(self, resolvedTokens);
             });

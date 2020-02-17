@@ -25,7 +25,7 @@
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
     "start": "ember serve",
-    "test": "ember test && ember fastboot:test",
+    "test": "ember test",
     "test:all": "ember try:each"
   },
   "dependencies": {

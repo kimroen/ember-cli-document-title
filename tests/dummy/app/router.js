@@ -1,11 +1,12 @@
 import EmberRouter from '@ember/routing/router';
-import config from './config/environment';
+import config from 'dummy/config/environment';
 
-const Router = EmberRouter.extend({
-  location: config.locationType,
-  rootURL: config.rootURL
-});
+export default class Router extends EmberRouter {
+  location = config.locationType;
+  rootURL = config.rootURL;
+}
 
+<<<<<<< HEAD
 Router.map(function() {
   this.route('posts', function() {});
   this.route('about');
@@ -16,3 +17,6 @@ Router.map(function() {
 });
 
 export default Router;
+=======
+Router.map(function () {});
+>>>>>>> fd54f22... v3.6.0-beta.1...v3.24.0

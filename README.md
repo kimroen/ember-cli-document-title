@@ -3,10 +3,24 @@ This addon adds sane `document.title` integration to your ember app.
 
 Originally based on [this gist by @machty](https://gist.github.com/machty/8413411), and since improved upon by many fabulous contributors.
 
+<<<<<<< HEAD
 Tested to work with Ember 1.13.13 and up.
 
 ## Install
 Install by running
+=======
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v3.16 or above
+* Ember CLI v2.13 or above
+* Node.js v10 or above
+
+
+Installation
+------------------------------------------------------------------------------
+>>>>>>> fd54f22... v3.6.0-beta.1...v3.24.0
 
 ```
 ember install ember-cli-document-title
@@ -123,6 +137,7 @@ You may be in a situation where it makes sense to have one or more of your `titl
 
 Luckily, you can return a promise from any of your `titleToken` functions, and they will all be resolved by the time your `title` function receives them.
 
+<<<<<<< HEAD
 An example! Let's say we have these two Ember Data models; a `post` and its `user`:
 
 ```js
@@ -165,6 +180,10 @@ export default Ember.Route.extend({
 
 With the same configuration for `Posts` and `Application` routes as in the previous example, this will result in this title:
 - On /posts/1 - "Ember is Omakase (by John Smith) - Posts - My Blog"
+=======
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+>>>>>>> fd54f22... v3.6.0-beta.1...v3.24.0
 
 It's worth noting that the page title will not update until all the promises have resolved.
 

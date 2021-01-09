@@ -24,6 +24,7 @@
     "build": "ember build",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "start": "ember serve",
     "test": "ember test && ember fastboot:test",
     "test:all": "ember try:each"

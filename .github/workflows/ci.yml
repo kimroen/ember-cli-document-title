@@ -23,7 +23,7 @@ jobs:
           ember-lts-3.20,
           ember-beta,
           ember-default-with-jquery,
-          ember-classic
+          fastboot-addon-tests
         ]
     steps:
     - uses: actions/checkout@v2

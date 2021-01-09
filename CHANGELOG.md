@@ -1,5 +1,8 @@
 ## master
 
+## 1.0.0
+There is value in releasing a 1.0.0! No breaking changes other than updating the [blueprints](https://github.com/kimroen/ember-cli-document-title/pull/80)
+
 ## 0.4.0
 + [BREAKING] Update dependencies and project/testing setup to match `ember-cli@2.15.0` [#56](https://github.com/kimroen/ember-cli-document-title/pull/56)
   `ember-cli-document-title` now requires Node 4 or greater.

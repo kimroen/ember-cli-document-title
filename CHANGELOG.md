@@ -1,5 +1,9 @@
 ## master
 
+## 1.1.0
+There is value in releasing a 1.0.0! No breaking changes other than updating the [blueprints](https://github.com/kimroen/ember-cli-document-title/pull/80)
+- [Rework]: Bring in fork changes [92](https://github.com/kimroen/ember-cli-document-title/pull/92)
+
 ## 1.0.0
 There is value in releasing a 1.0.0! No breaking changes other than updating the [blueprints](https://github.com/kimroen/ember-cli-document-title/pull/80)
 

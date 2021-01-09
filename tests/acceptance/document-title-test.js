@@ -4,18 +4,18 @@ import { setupApplicationTest } from 'ember-qunit';
 
 let originalTitle;
 
-module('Acceptance: DocumentTitle', function(hooks) {
+module('Acceptance: DocumentTitle', function (hooks) {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     originalTitle = document.title;
   });
 
-  hooks.afterEach(function() {
+  hooks.afterEach(function () {
     document.title = originalTitle;
   });
 
-  test('Show default title properly - no tokens', async function(assert) {
+  test('Show default title properly - no tokens', async function (assert) {
     assert.expect(1);
 
     await visit('/');
@@ -23,7 +23,7 @@ module('Acceptance: DocumentTitle', function(hooks) {
     assert.equal(document.title, 'My Blog', 'Default title is correct');
   });
 
-  test("static title doesn't bubble", async function(assert) {
+  test("static title doesn't bubble", async function (assert) {
     assert.expect(1);
 
     await visit('/about');
@@ -31,7 +31,7 @@ module('Acceptance: DocumentTitle', function(hooks) {
     assert.equal(document.title, 'About Us', "It doesn't bubble up");
   });
 
-  test('bubbling title tokens', async function(assert) {
+  test('bubbling title tokens', async function (assert) {
     assert.expect(1);
 
     await visit('/team');
@@ -43,7 +43,7 @@ module('Acceptance: DocumentTitle', function(hooks) {
     );
   });
 
-  test('dynamic title based on a model', async function(assert) {
+  test('dynamic title based on a model', async function (assert) {
     assert.expect(1);
 
     await visit('/posts');
@@ -51,7 +51,7 @@ module('Acceptance: DocumentTitle', function(hooks) {
     assert.equal(document.title, 'Ember is omakase - Posts - My Blog');
   });
 
-  test('dynamic title based on route attributes', async function(assert) {
+  test('dynamic title based on route attributes', async function (assert) {
     assert.expect(1);
 
     await visit('/friendship-status');
@@ -63,7 +63,7 @@ module('Acceptance: DocumentTitle', function(hooks) {
     );
   });
 
-  test('returning an array from titleToken works', async function(assert) {
+  test('returning an array from titleToken works', async function (assert) {
     assert.expect(1);
 
     await visit('/candy');
@@ -74,7 +74,7 @@ module('Acceptance: DocumentTitle', function(hooks) {
     );
   });
 
-  test('title updates when you switch routes', async function(assert) {
+  test('title updates when you switch routes', async function (assert) {
     assert.expect(2);
 
     await visit('/about');
@@ -86,14 +86,14 @@ module('Acceptance: DocumentTitle', function(hooks) {
     assert.equal(document.title, 'Ember is omakase - Posts - My Blog');
   });
 
-  test('promise title is set after promise is resolved', async function(assert) {
+  test('promise title is set after promise is resolved', async function (assert) {
     assert.expect(1);
 
     var done = assert.async();
 
     await visit('/promise');
 
-    setTimeout(function() {
+    setTimeout(function () {
       assert.equal(
         document.title,
         'This title is as async as possible - My Blog'

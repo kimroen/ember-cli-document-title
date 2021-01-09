@@ -3,23 +3,23 @@ import { setupTest } from 'ember-qunit';
 
 let originalTitle;
 
-module('router:main', function(hooks) {
+module('router:main', function (hooks) {
   setupTest(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     originalTitle = document.title;
     this.router = this.owner.lookup('router:main');
   });
 
-  hooks.afterEach(function() {
+  hooks.afterEach(function () {
     document.title = originalTitle;
   });
 
-  test('it sets document title on the renderer:-dom if present', function(assert) {
+  test('it sets document title on the renderer:-dom if present', function (assert) {
     let renderer = { _dom: { document: {} } };
 
     this.owner.register('renderer:-dom', {
-      create: function() {
+      create: function () {
         return renderer;
       },
     });
@@ -32,7 +32,7 @@ module('router:main', function(hooks) {
     );
   });
 
-  test('it sets document title on the real `document.title` if renderer is not present', function(assert) {
+  test('it sets document title on the real `document.title` if renderer is not present', function (assert) {
     this.router.setTitle('foo - no renderer test');
     assert.equal(
       document.title,

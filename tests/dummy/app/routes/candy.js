@@ -7,5 +7,5 @@ export default Route.extend({
 
   titleToken() {
     return ['dumle', 'sort pepper'];
-  }
+  },
 });

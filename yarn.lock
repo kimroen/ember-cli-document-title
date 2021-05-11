@@ -2736,7 +2736,7 @@ ember-export-application-global@^2.0.0:
   dependencies:
     ember-cli-babel "^6.0.0-beta.7"
 
-ember-fastboot-addon-tests@^0.5.1:
+ember-fastboot-addon-tests@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/ember-fastboot-addon-tests/-/ember-fastboot-addon-tests-0.5.1.tgz#a0af9d9c80b97ddc3e03481c08cdc78931394642"
   integrity sha512-HpYYZ5HWp+i76wR3rJGJjDd2+YncKo5QkPiADTFkL0TdVU13yV8WowT1spxPQhtSa5N6HNQ9vcNb/ka1qIpVYQ==
@@ -5333,9 +5333,9 @@ lodash.values@~2.3.0:
     lodash.keys "~2.3.0"
 
 lodash@^4.0.0, lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.6.1:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^2.2.0:
   version "2.2.0"

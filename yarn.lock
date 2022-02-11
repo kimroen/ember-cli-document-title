@@ -2736,7 +2736,7 @@ ember-export-application-global@^2.0.0:
   dependencies:
     ember-cli-babel "^6.0.0-beta.7"
 
-ember-fastboot-addon-tests@^0.5.1:
+ember-fastboot-addon-tests@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/ember-fastboot-addon-tests/-/ember-fastboot-addon-tests-0.5.1.tgz#a0af9d9c80b97ddc3e03481c08cdc78931394642"
   integrity sha512-HpYYZ5HWp+i76wR3rJGJjDd2+YncKo5QkPiADTFkL0TdVU13yV8WowT1spxPQhtSa5N6HNQ9vcNb/ka1qIpVYQ==
@@ -6230,9 +6230,9 @@ path-type@^3.0.0:
     pify "^3.0.0"
 
 pathval@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/pathval/-/pathval-1.1.0.tgz#b942e6d4bde653005ef6b71361def8727d0645e0"
-  integrity sha1-uULm1L3mUwBe9rcTYd74cn0GReA=
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/pathval/-/pathval-1.1.1.tgz#8534e77a77ce7ac5a2512ea21e0fdb8fcf6c3d8d"
+  integrity sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==
 
 performance-now@^2.1.0:
   version "2.1.0"

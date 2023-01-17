@@ -1,11 +1,11 @@
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+export default class CandyRoute extends Route {
   title(tokens) {
     return `My favorite candies are ${tokens.join(' and ')}`;
-  },
+  }
 
-  titleToken() {
+  get titleToken() {
     return ['dumle', 'sort pepper'];
   }
-});
+}

@@ -1,4 +1,6 @@
-;(function() {
+const Ember = require('ember').default;
+
+(function () {
   var get = Ember.get;
   var getOwner = Ember.getOwner;
   var Promise = Ember.RSVP.Promise;
@@ -14,7 +16,7 @@
     // that will be the document title. The `collectTitleTokens` action
     // stops bubbling once a route is encountered that has a `title`
     // defined.
-    title: null
+    title: null,
   };
 
   /*
@@ -24,7 +26,7 @@
     Here, we inspect the `Ember.Route` prototype, iterate over its
     `mergedProperties` to see what is used, and then use that.
    */
-  var mergedActionPropertyName = (function() {
+  var mergedActionPropertyName = (function () {
     var routeProto = Ember.Route.proto();
     var mergedProps = routeProto.mergedProperties;
 
@@ -38,7 +40,7 @@
   })();
 
   routeProps[mergedActionPropertyName] = {
-    collectTitleTokens: function(tokens) {
+    collectTitleTokens: function (tokens) {
       var titleToken = get(this, 'titleToken');
       if (typeof titleToken === 'function') {
         titleToken = titleToken.call(this, get(this, 'currentModel'));
@@ -58,10 +60,10 @@
 
         // Wrap in promise in case some tokens are asynchronous.
         var completion = Promise.resolve()
-          .then(function() {
+          .then(function () {
             if (typeof title === 'function') {
               // Wait for all tokens to resolve. It resolves immediately if all tokens are plain values (not promises).
-              return Promise.all(tokens).then(function(resolvedTokens) {
+              return Promise.all(tokens).then(function (resolvedTokens) {
                 return title.call(self, resolvedTokens);
               });
             } else {
@@ -70,7 +72,7 @@
               return title;
             }
           })
-          .then(function(finalTitle) {
+          .then(function (finalTitle) {
             var router =
               typeof getOwner === 'function'
                 ? getOwner(self).lookup('router:main')
@@ -89,17 +91,17 @@
         // Continue bubbling.
         return true;
       }
-    }
+    },
   };
 
   Ember.Route.reopen(routeProps);
 
   Ember.Router.reopen({
-    updateTitle: Ember.on('didTransition', function() {
+    updateTitle: Ember.on('routeDidChange', function () {
       this.send('collectTitleTokens', []);
     }),
 
-    setTitle: function(title) {
+    setTitle: function (title) {
       var container = getOwner ? getOwner(this) : this.container;
       var renderer = container.lookup('renderer:-dom');
       var domForAppWithGlimmer2 = container.lookup('service:-document');
@@ -112,7 +114,7 @@
       } else {
         document.title = title;
       }
-    }
+    },
   });
 
   function lookupFastBoot(context) {

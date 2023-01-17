@@ -1,9 +1,9 @@
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-  status: 'friends',
+export default class FriendshipStatusIndexRoute extends Route {
+  status = 'friends';
 
-  titleToken: function() {
-    return this.get('status');
+  titleToken() {
+    return this.status;
   }
-});
+}

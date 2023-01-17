@@ -1,13 +1,14 @@
 import EmberObject from '@ember/object';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-  model: function() {
+export default class PostsIndexRoute extends Route {
+  model() {
     return EmberObject.create({
-      title: "Ember is omakase"
+      title: 'Ember is omakase',
     });
-  },
-  titleToken: function(model) {
+  }
+
+  titleToken(model) {
     return model.get('title');
   }
-});
+}

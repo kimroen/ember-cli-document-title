@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-  titleToken: 'The Team'
-});
+export default class TeamRoute extends Route {
+  titleToken = 'The Team';
+}

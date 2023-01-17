@@ -1,9 +1,9 @@
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-  degree: 'best',
+export default class FriendshipStatusRoute extends Route {
+  degree = 'best';
 
-  title: function(tokens) {
-    return `We are ${this.get('degree')} ${tokens.join(' ')}`;
+  title(tokens) {
+    return `We are ${this.degree} ${tokens.join(' ')}`;
   }
-});
+}
